@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="blog">
+
+	<update id="update" parameterType="map">
+		<![CDATA[
+			update blog 
+ 		       set title = #{title}, logo = #{logo} 
+		 	 where no = ( select no 
+ 							     from users
+ 							    where id = #{id})
+		]]>
+	</update>
+
+
+	<select id="getList" parameterType="String" resultType="blogvo">
+		<![CDATA[
+			select no, title, logo
+			  from blog
+			 where user_no = ( select no 
+ 							     from users
+ 							    where id = #{id})
+		]]>
+	</select>
+	
+	
+	
+	
+	
+	<select id="getCategoryList" parameterType="String" resultType="categoryvo">
+		<![CDATA[
+			select a.no, a.name, b.id as id
+			  from category a, users b
+			 where a.blog_no = b.no
+			   and  blog_no = ( select no 
+ 							     from users
+ 							    where id = #{id})
+		]]>
+	</select>
+	
+		<select id="getPostList" parameterType="map" resultType="postvo">
+		<![CDATA[
+			select a.no as no, title, a.reg_date as regDate, c.id as id, b.no as categoryNo
+			  from post a, category b, users c
+			 where a.category_no = b.no and c.no = b.blog_no
+			   and b.blog_no = ( select no 
+ 							       from users
+ 							      where id = #{id})
+ 			   and a.category_no = #{no}
+ 			order by a.no desc;
+		]]>
+	</select>
+	
+	<select id="getPost" parameterType="String" resultType="postvo">
+		<![CDATA[
+			select title, a.content as content
+			  from post a, category b, users c
+			 where a.category_no = b.no 
+			   and b.blog_no = ( select no 
+ 							       from users
+ 							      where id = #{id})
+ 		  order by a.no desc limit 0,1;
+		]]>
+	</select>
+	
+	<select id="getPostOne" parameterType="map" resultType="postvo">
+		<![CDATA[
+			select title, a.content as content
+			  from post a, category b
+			 where a.category_no = b.no
+			   and b.blog_no = ( select no 
+ 							       from users
+ 							      where id = #{id})
+ 		  	   and a.no = #{no}
+		]]>
+	</select>
+	
+	
+	
+	
+	
+	
+ 		 	 
+
+</mapper>
