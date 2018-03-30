@@ -24,7 +24,6 @@ public class CategoryController {
 	@Auth
 	@RequestMapping(value = "/{id}/admin/category", method = RequestMethod.GET)
 	public String list(@PathVariable("id") String id) {
-
 		return "blog/blog-admin-category";
 	}
 

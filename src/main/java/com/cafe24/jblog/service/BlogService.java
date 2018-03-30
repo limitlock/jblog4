@@ -32,12 +32,13 @@ public class BlogService {
 		List<CategoryVo> categoryList = blogDao.getCategoryList(id);
 		model.addAttribute("categoryList", categoryList);
 		
-		List<PostVo> postList = blogDao.getPostList(id,null);
+		List<PostVo> postList = blogDao.getPostList(id,"1");
 		model.addAttribute("postList",postList);
 		
 		List<PostVo> post = blogDao.getPost(id);
 		model.addAttribute("post",post);
 		
+		model.addAttribute("id",id);
 		System.out.println("main()");
 	}
 

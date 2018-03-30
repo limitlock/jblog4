@@ -41,7 +41,7 @@
 	
 		<select id="getPostList" parameterType="map" resultType="postvo">
 		<![CDATA[
-			select a.no as no, title, a.reg_date as regDate, c.id as id, b.no as categoryNo
+			select a.no as no, title, DATE_FORMAT(a.reg_date,'%Y/%m/%d') as regDate, c.id as id, b.no as categoryNo
 			  from post a, category b, users c
 			 where a.category_no = b.no and c.no = b.blog_no
 			   and b.blog_no = ( select no 

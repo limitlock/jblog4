@@ -115,16 +115,14 @@ $(function(){
 		});
 	});
 });
-
-
 </script>
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<c:forEach items="${list }" var ="vo">
-			<h1>${vo.title }</h1>
-			</c:forEach>
+			<%-- <c:forEach items="${list }" var ="vo"> --%>
+			<h1>이 부분 수정해야합니다.</h1>
+			<%-- </c:forEach> --%>
 			<c:import url="/WEB-INF/views/includes/blog_header.jsp"/>
 		</div>
 		<div id="wrapper">
@@ -141,7 +139,6 @@ $(function(){
 		      			<th>삭제</th>      			
 		      		</tr>
 				</table>
-      	
       			<h4 class="n-c">새로운 카테고리 추가</h4>
 		      	<table id="admin-cat-add">
 		      		<tr>

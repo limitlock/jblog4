@@ -15,7 +15,9 @@
 		<c:forEach items="${list }" var ="vo">
 			<h1>${vo.title }</h1>
 		</c:forEach>
-		<c:import url="/WEB-INF/views/includes/blog_header.jsp"/>
+		<c:import url="/WEB-INF/views/includes/blog_header.jsp">
+			<c:param name="blog_id" value="basic"/>
+		</c:import>
 		</div>
 		<div id="wrapper">
 			<div id="content">

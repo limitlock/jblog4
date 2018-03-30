@@ -20,7 +20,7 @@
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 			<c:import url="/WEB-INF/views/includes/admin-menu.jsp">
-				<c:param name="menu" value="basic"/>
+				<c:param name="menu" value="${id }"/>
 			</c:import>
 				<form action="${pageContext.servletContext.contextPath }/${authUser.id }/admin/basic" method="post" enctype="multipart/form-data" >
 						<table class="admin-config">
