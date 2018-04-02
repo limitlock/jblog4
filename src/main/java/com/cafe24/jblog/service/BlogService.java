@@ -35,7 +35,7 @@ public class BlogService {
 		List<PostVo> postList = blogDao.getPostList(id,"1");
 		model.addAttribute("postList",postList);
 		
-		List<PostVo> post = blogDao.getPost(id);
+		List<PostVo> post = blogDao.getPostMain(id);
 		model.addAttribute("post",post);
 		
 		model.addAttribute("id",id);
@@ -109,6 +109,7 @@ public class BlogService {
 		
 		List<PostVo> postList = blogDao.getPostList(id,categoryno);
 		model.addAttribute("postList",postList);
+		
 		List<PostVo> post = blogDao.getPostOne(id,no);
 		model.addAttribute("post",post);
 		
@@ -124,7 +125,7 @@ public class BlogService {
 		List<PostVo> postList = blogDao.getPostList(id, no);
 		model.addAttribute("postList",postList);
 		
-		List<PostVo> post = blogDao.getPost(id);
+		List<PostVo> post = blogDao.getPost(id,no);
 		model.addAttribute("post",post);
 		
 	}

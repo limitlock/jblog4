@@ -23,11 +23,11 @@
  							    where id = #{id})
 		]]>
 	</select>
-	
-	
-	
-	
-	
+
+
+
+
+
 	<select id="getCategoryList" parameterType="String" resultType="categoryvo">
 		<![CDATA[
 			select a.no, a.name, b.id as id
@@ -38,8 +38,8 @@
  							    where id = #{id})
 		]]>
 	</select>
-	
-		<select id="getPostList" parameterType="map" resultType="postvo">
+
+	<select id="getPostList" parameterType="map" resultType="postvo">
 		<![CDATA[
 			select a.no as no, title, DATE_FORMAT(a.reg_date,'%Y/%m/%d') as regDate, c.id as id, b.no as categoryNo
 			  from post a, category b, users c
@@ -51,8 +51,23 @@
  			order by a.no desc;
 		]]>
 	</select>
-	
-	<select id="getPost" parameterType="String" resultType="postvo">
+
+	<select id="C_getPost" parameterType="map" resultType="postvo">
+		<![CDATA[
+			select title, a.content as content
+			  from post a, category b, users c
+			 where a.category_no = b.no 
+			   and b.blog_no = ( select no 
+ 							       from users
+ 							      where id = #{id})
+ 			   and a.category_no = #{no}			      
+ 							      
+ 							      
+ 		  order by a.no desc limit 0,1;
+		]]>
+	</select>
+
+	<select id="M_getPost" parameterType="String" resultType="postvo">
 		<![CDATA[
 			select title, a.content as content
 			  from post a, category b, users c
@@ -63,8 +78,8 @@
  		  order by a.no desc limit 0,1;
 		]]>
 	</select>
-	
-	<select id="getPostOne" parameterType="map" resultType="postvo">
+
+	<select id="P_getPostOne" parameterType="map" resultType="postvo">
 		<![CDATA[
 			select title, a.content as content
 			  from post a, category b
@@ -75,12 +90,12 @@
  		  	   and a.no = #{no}
 		]]>
 	</select>
-	
-	
-	
-	
-	
-	
- 		 	 
+
+
+
+
+
+
+
 
 </mapper>

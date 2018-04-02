@@ -46,9 +46,11 @@ public class BlogDao {
 		return sqlSession.selectList("blog.getPostList",map);
 	}
 
-	public List<PostVo> getPost(String id) {
-	
-		return sqlSession.selectList("blog.getPost",id);
+	public List<PostVo> getPost(String id, String no) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("no", no);
+		return sqlSession.selectList("blog.C_getPost",map);
 	}
 
 	public List<PostVo> getPostOne(String id, String no) {
@@ -56,7 +58,12 @@ public class BlogDao {
 		map.put("id", id);
 		map.put("no", no);
 		
-		return sqlSession.selectList("blog.getPostOne",map);
+		return sqlSession.selectList("blog.P_getPostOne",map);
+	}
+
+	public List<PostVo> getPostMain(String id) {
+		
+		return sqlSession.selectList("blog.M_getPost",id);
 	}
 
 }

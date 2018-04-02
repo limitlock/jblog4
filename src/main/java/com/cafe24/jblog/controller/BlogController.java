@@ -50,7 +50,6 @@ public class BlogController {
 	@RequestMapping("/{id}/listview")
 	public String postlistView(@PathVariable("id") String id, Model model,
 			@RequestParam(value = "categoryNo", required = true, defaultValue = "1") String no) {
-
 		blogService.postlistView(model, id, no);
 		return "blog/blog-main";
 	}

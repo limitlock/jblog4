@@ -21,12 +21,13 @@ public class CategoryController {
 	@Autowired
 	private CategoryDao categoryDao;
 
-	@Auth
+	@Auth(role = Auth.Role.ADMIN)
 	@RequestMapping(value = "/{id}/admin/category", method = RequestMethod.GET)
 	public String list(@PathVariable("id") String id) {
 		return "blog/blog-admin-category";
 	}
 
+	@Auth(role = Auth.Role.ADMIN)
 	@ResponseBody
 	@RequestMapping(value = "/{id}/admin/categoryAjax", method = RequestMethod.GET)
 	public JSONResult list2(@PathVariable("id") String id) {

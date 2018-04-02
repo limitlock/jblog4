@@ -4,12 +4,14 @@
 <mapper namespace="category">
 
 	<select id="getList" parameterType="string" resultType="categoryvo">
-		<![CDATA[
-			select no, name, post_num as postNum, content, blog_no as blogNo
-			  from category
-			 where blog_no = (select no 
-						  		from users
-						 	   where id = #{id});		
+		<![CDATA[		 	   	
+			  select a.no, name, ifnull(count(b.no),0) as postNum, a.content, blog_no as blogNo
+			    from category a left outer join post b
+			      on a.no = b.category_no
+			   where blog_no = (select no 
+								  from users
+							     where id = #{id})
+			group by a.no;
 		]]>
 	</select>
 
