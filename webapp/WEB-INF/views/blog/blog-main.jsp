@@ -32,7 +32,7 @@
 				
 				<ul class="blog-list">
 				<c:forEach items="${postList }" var ="vo">
-					<li><a href="${pageContext.request.contextPath}/${vo.id}/view?categoryNo=${vo.categoryNo}&postNo=${vo.no}">${vo.title }</a><span>${vo.regDate }</span></li>
+					<li><a href="${pageContext.request.contextPath}/${vo.id}/view/${vo.categoryNo}/${vo.no}">${vo.title }</a><span>${vo.regDate }</span></li>
 				</c:forEach>
 				</ul>
 			
@@ -50,7 +50,7 @@
 			
 			<ul>
 			<c:forEach items="${categoryList }" var ="vo">
-				<li><a href="${pageContext.request.contextPath}/${vo.id}/listview?categoryNo=${vo.no }">${vo.name }</a></li>
+				<li><a href="${pageContext.request.contextPath}/${vo.id}/listview/${vo.no }">${vo.name }</a></li>
 				</c:forEach>
 			</ul>
 			

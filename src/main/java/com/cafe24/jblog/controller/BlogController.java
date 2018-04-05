@@ -40,16 +40,15 @@ public class BlogController {
 		return "redirect:/" + id;
 	}
 
-	@RequestMapping("/{id}/view")
-	public String postView(@PathVariable("id") String id, Model model, @RequestParam("postNo") String no,
-			@RequestParam("categoryNo") String categoryno) {
+	@RequestMapping("/{id}/view/{categoryNo}/{postNo}")
+	public String postView(@PathVariable("id") String id, Model model, @PathVariable("postNo") String no,
+			@PathVariable("categoryNo") String categoryno) {
 		blogService.postView(model, id, no, categoryno);
 		return "blog/blog-main";
 	}
 
-	@RequestMapping("/{id}/listview")
-	public String postlistView(@PathVariable("id") String id, Model model,
-			@RequestParam(value = "categoryNo", required = true, defaultValue = "1") String no) {
+	@RequestMapping("/{id}/listview/{categoryNo}")
+	public String postlistView(@PathVariable("id") String id, Model model, @PathVariable("categoryNo") String no) {
 		blogService.postlistView(model, id, no);
 		return "blog/blog-main";
 	}

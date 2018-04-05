@@ -1,10 +1,25 @@
 package com.cafe24.jblog.vo;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserVo {
+
 	private Long no;
+
+	@NotEmpty
+	@Length(min = 2, max = 10)
 	private String id;
+
+	@NotEmpty
 	private String name;
+
+	@NotEmpty
+	@Pattern(regexp = "^[0-9a-zA-Z]{4,12}$")
 	private String password;
+
 	private String regDate;
 
 	public Long getNo() {
